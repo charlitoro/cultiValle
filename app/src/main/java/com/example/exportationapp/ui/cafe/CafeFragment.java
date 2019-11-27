@@ -22,8 +22,8 @@ public class CafeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(CafeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
+        View root = inflater.inflate(R.layout.fragment_cafe, container, false);
+        final TextView textView = root.findViewById(R.id.text_cafe);
         galleryViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

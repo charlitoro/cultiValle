@@ -22,8 +22,8 @@ public class BananoFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         sendViewModel =
                 ViewModelProviders.of(this).get(BananoViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
+        View root = inflater.inflate(R.layout.fragment_banano, container, false);
+        final TextView textView = root.findViewById(R.id.text_banano);
         sendViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

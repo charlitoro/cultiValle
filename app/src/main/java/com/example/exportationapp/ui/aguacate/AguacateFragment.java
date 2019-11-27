@@ -22,8 +22,8 @@ public class AguacateFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(AguacateViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_aguacate, container, false);
+        final TextView textView = root.findViewById(R.id.text_aguacate);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

@@ -5,9 +5,11 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configuración</string>
 
     <string name="menu_aguacate">Aguacate</string>
     <string name="menu_banano">Banano</string>
     <string name="menu_cafe">Cafe</string>
+
+    <string name="textBtnYear">Año</string>
 </resources>

@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_banano"
-        android:name="com.example.exportationapp.ui.cafe.CafeFragment"
+        android:name="com.example.exportationapp.ui.banano.BananoFragment"
         android:label="@string/menu_banano"
         tools:layout="@layout/fragment_cafe" />
 
     <fragment
         android:id="@+id/nav_cafe"
-        android:name="com.example.exportationapp.ui.banano.BananoFragment"
+        android:name="com.example.exportationapp.ui.cafe.CafeFragment"
         android:label="@string/menu_banano"
         tools:layout="@layout/fragment_banano" />
 </navigation>

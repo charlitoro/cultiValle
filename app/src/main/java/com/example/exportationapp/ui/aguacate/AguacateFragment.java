@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +73,7 @@ public class AguacateFragment extends Fragment {
                 .build();
         // any chart view
         anyChartView = view.findViewById(R.id.chartViewAguacate);
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_aguacate));
         getData();
         return view;
     }

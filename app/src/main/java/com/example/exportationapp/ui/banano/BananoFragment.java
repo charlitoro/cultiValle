@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -43,6 +44,7 @@ public class BananoFragment extends Fragment {
     ArrayList<String> departments = new ArrayList<String>();
     ArrayList<Double> tons = new ArrayList<Double>();
     ChartsView chartsView = new ChartsView();
+    ProgressBar progressBar;
 
     // Retrofit request
     private Retrofit retrofit;
@@ -63,6 +65,8 @@ public class BananoFragment extends Fragment {
                 showYearDialog(view);
             }
         });
+        // progress bar
+        progressBar = view.findViewById(R.id.progress_bar_banano);
 
         // Retroview get data
         retrofit = new Retrofit.Builder().baseUrl("https://www.datos.gov.co/resource/")
@@ -70,6 +74,7 @@ public class BananoFragment extends Fragment {
                 .build();
         // any chart view
         anyChartView = view.findViewById(R.id.chartViewBanano);
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_banano));
         getData();
 
         return view;

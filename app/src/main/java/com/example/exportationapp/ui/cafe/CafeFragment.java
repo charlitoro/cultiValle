@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -71,6 +72,7 @@ public class CafeFragment extends Fragment {
                 .build();
         // any chart view
         anyChartView = view.findViewById(R.id.chartViewCafe);
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_cafe));
         getData();
 
         return view;
@@ -98,7 +100,7 @@ public class CafeFragment extends Fragment {
                                 tons.add(report.getVolumentoneladas());
                             }
                         }
-                        chartsView.setup3DBarChart(departments, tons, anyChartView);
+                        chartsView.setupColumnChart(departments, tons, anyChartView);
                     } else {
                         Log.e(LOGS, "onResponse: " + response.errorBody());
                     }

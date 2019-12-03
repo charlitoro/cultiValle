@@ -1,5 +1,7 @@
 package com.example.exportationapp;
 
+import android.widget.ProgressBar;
+
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
@@ -44,10 +46,10 @@ public class ChartsView {
                 .anchor(Anchor.CENTER_BOTTOM)
                 .offsetX(0d)
                 .offsetY(5d)
-                .format("${%Value}{groupsSeparator: }");
+                .format("{%Value}{groupsSeparator: }");
         cartesian.animation(true);
         cartesian.yScale().minimum(0d);
-        cartesian.yAxis(0).labels().format("${%Value}{groupsSeparator: }");
+        cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
 
@@ -66,7 +68,7 @@ public class ChartsView {
         bar3d.xAxis(0).labels()
                 .rotation(-90d)
                 .padding(0d, 0d, 20d, 0d);
-        bar3d.yAxis(0).labels().format("${%Value}{groupsSeparator: }");
+        bar3d.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
 
         bar3d.yAxis(0).title("Toneladas");
 
@@ -93,7 +95,7 @@ public class ChartsView {
             .anchor(Anchor.LEFT_CENTER)
             .offsetX(5d)
             .offsetY(0d)
-            .format("${%Value}");
+            .format("{%Value}");
 
         bar3d.zAspect("10%")
             .zPadding(20d)

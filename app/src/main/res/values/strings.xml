@@ -11,5 +11,8 @@
     <string name="menu_permanentes">Permanentes</string>
     <string name="menu_transitorios">Transitorios</string>
 
+    <string name="chart_cultivo">Cultivos</string>
+    <string name="chart_toneladas">Toneladas</string>
+
     <string name="textBtnYear">Año</string>
 </resources>

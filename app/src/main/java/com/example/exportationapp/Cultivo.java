@@ -2,30 +2,30 @@ package com.example.exportationapp;
 
 public class Cultivo {
     private String name;
-    private Double tons;
+    private Double hectares;
 
-    public Cultivo (String name, Double tons) {
+    public Cultivo (String name, Double hectares) {
         this.name = name;
-        this.tons = tons;
+        this.hectares = hectares;
     }
 
-    public void sumTons(Double tons) {
-        this.tons = this.tons + tons;
+    public void sumHectares(Double hectares) {
+        this.hectares = this.hectares + hectares;
     }
 
     public String getName() {
         return name;
     }
 
-    public Double getTons() {
-        return tons;
+    public Double getHectares() {
+        return hectares;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setTons(Double tons) {
-        this.tons = tons;
+    public void setHectares(Double hectares) {
+        this.hectares = hectares;
     }
 }

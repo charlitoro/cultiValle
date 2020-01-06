@@ -17,7 +17,7 @@ public class ShellSort {
             for (int i = gap; i< size; i++) {
                 Cultivo key = this.list.get(i);
                 int j = i;
-                while (j >= gap && this.list.get(j - gap).getTons() > key.getTons()) {
+                while (j >= gap && this.list.get(j - gap).getHectares() > key.getHectares()) {
                     this.list.set(j, this.list.get(j - gap));
                     j -= gap;
                 }

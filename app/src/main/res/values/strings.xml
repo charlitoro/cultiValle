@@ -7,9 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuración</string>
 
-    <string name="menu_aguacate">Aguacate</string>
-    <string name="menu_banano">Banano</string>
-    <string name="menu_cafe">Cafe</string>
+    <string name="menu_frutales">Frutales</string>
+    <string name="menu_permanentes">Permanentes</string>
+    <string name="menu_transitorios">Transitorios</string>
 
     <string name="textBtnYear">Año</string>
 </resources>

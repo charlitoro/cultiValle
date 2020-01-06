@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_aguacate">
+    app:startDestination="@+id/nav_frutales">
 
     <fragment
-        android:id="@+id/nav_aguacate"
-        android:name="com.example.exportationapp.ui.aguacate.AguacateFragment"
-        android:label="@string/menu_aguacate"
-        tools:layout="@layout/fragment_aguacate" />
+        android:id="@+id/nav_frutales"
+        android:name="com.example.exportationapp.ui.frutal.FrutalFragment"
+        android:label="@string/menu_frutales"
+        tools:layout="@layout/fragment_cultivo" />
 
     <fragment
-        android:id="@+id/nav_banano"
-        android:name="com.example.exportationapp.ui.banano.BananoFragment"
-        android:label="@string/menu_banano"
-        tools:layout="@layout/fragment_cafe" />
+        android:id="@+id/nav_permanentes"
+        android:name="com.example.exportationapp.ui.permanente.PermanenteFragment"
+        android:label="@string/menu_permanentes"
+        tools:layout="@layout/fragment_cultivo" />
 
     <fragment
-        android:id="@+id/nav_cafe"
-        android:name="com.example.exportationapp.ui.cafe.CafeFragment"
-        android:label="@string/menu_banano"
-        tools:layout="@layout/fragment_banano" />
+        android:id="@+id/nav_transitorios"
+        android:name="com.example.exportationapp.ui.transitorio.TransitorioFragment"
+        android:label="@string/menu_transitorios"
+        tools:layout="@layout/fragment_cultivo" />
 </navigation>

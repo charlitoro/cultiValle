@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_cafe"
+        android:id="@+id/text_transitorio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,7 +21,7 @@
 
     <Button
         style="@style/Widget.AppCompat.Button.Colored"
-        android:id="@+id/btnCafeYear"
+        android:id="@+id/btnTransitorioYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
@@ -29,23 +29,23 @@
         android:layout_marginEnd="165dp"
         android:layout_marginBottom="10dp"
         android:text="@string/textBtnYear"
-        app:layout_constraintBottom_toTopOf="@+id/chartViewCafe"
+        app:layout_constraintBottom_toTopOf="@+id/chartViewTransitorio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_cafe" />
+        app:layout_constraintTop_toBottomOf="@+id/text_transitorio" />
 
     <com.anychart.AnyChartView
-        android:id="@+id/chartViewCafe"
+        android:id="@+id/chartViewTransitorio"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCafeYear" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTransitorioYear" />
 
     <ProgressBar
-        android:id="@+id/progress_bar_cafe"
+        android:id="@+id/progress_bar_transitorio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

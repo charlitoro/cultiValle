@@ -63,7 +63,7 @@ public class ChartsView {
         Cartesian3d bar3d = AnyChart.bar3d();
         bar3d.animation(true);
         bar3d.padding(10d, 40d, 5d, 20d);
-        bar3d.title("Exportaciones de Cafe");
+        bar3d.title("Exportaciones de Transitorio");
         bar3d.yScale().minimum(0d);
         bar3d.xAxis(0).labels()
                 .rotation(-90d)

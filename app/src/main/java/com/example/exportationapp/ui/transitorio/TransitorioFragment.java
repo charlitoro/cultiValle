@@ -1,4 +1,4 @@
-package com.example.exportationapp.ui.aguacate;
+package com.example.exportationapp.ui.transitorio;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -8,22 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.anychart.AnyChartView;
+import com.anychart.core.stock.indicators.TRIX;
 import com.example.exportationapp.ChartsView;
 import com.example.exportationapp.R;
 import com.example.exportationapp.exportationapi.ExportationApi;
-import com.example.exportationapp.models.Aguacate;
+import com.example.exportationapp.models.Frutal;
+import com.example.exportationapp.models.Transitorio;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,8 +31,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AguacateFragment extends Fragment {
-//    private AguacateViewModel homeViewModel;
+public class TransitorioFragment extends Fragment {
+//    private TransitorioViewModel homeViewModel;
 
     // Year picker
     Button btnYear;
@@ -50,15 +46,18 @@ public class AguacateFragment extends Fragment {
 
     // Retrofit request
     private Retrofit retrofit;
-    private List<Aguacate> aguacates;
+    private List<Transitorio> transitorios;
     private final static String LOGS = "---| ";
+
+    private final static String BASE_URI = "https://www.datos.gov.co/resource/";
+    private final static String API = "vs5v-e66i.json";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_aguacate, container, false);
+        View view = inflater.inflate(R.layout.fragment_cultivo, container, false);
 
         // btnYear
-        btnYear = view.findViewById(R.id.btnAguacateYear);
+        btnYear = view.findViewById(R.id.btnCultivoYear);
         btnYear.setText(year.toString());
         btnYear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +67,12 @@ public class AguacateFragment extends Fragment {
         });
 
         // Retroview get data
-        retrofit = new Retrofit.Builder().baseUrl("https://www.datos.gov.co/resource/")
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URI)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         // any chart view
-        anyChartView = view.findViewById(R.id.chartViewAguacate);
-        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_aguacate));
+        anyChartView = view.findViewById(R.id.chartViewCultivo);
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_cultivo));
         getData();
         return view;
     }
@@ -83,23 +82,23 @@ public class AguacateFragment extends Fragment {
     private void getData() {
         try {
             ExportationApi service = retrofit.create(ExportationApi.class);
-            Call<List<Aguacate>> call = service.getReportAguacate("hbhi-uygi.json?anio="+year.toString());
+            Call<List<Transitorio>> call = service.getReporTransitorios(API+"?a_o="+year.toString());
 
-            call.enqueue(new Callback<List<Aguacate>>() {
+            call.enqueue(new Callback<List<Transitorio>>() {
                 @Override
-                public void onResponse(Call<List<Aguacate>> call, Response<List<Aguacate>> response) {
+                public void onResponse(Call<List<Transitorio>> call, Response<List<Transitorio>> response) {
                     if (response.isSuccessful()) {
-                        aguacates = response.body();
-                        for(int i=0; i < aguacates.size(); i++) {
-                            Aguacate report = aguacates.get(i);
-                            if (departments.contains(report.getDepartamentoorigen())) {
-                                int index = departments.indexOf(report.getDepartamentoorigen());
-                                tons.set(index, tons.get(index) + report.getVolMentoneladas());
-                            } else {
-                                departments.add(report.getDepartamentoorigen());
-                                tons.add(report.getVolMentoneladas());
-                            }
-                        }
+                        transitorios = response.body();
+//                        for(int i = 0; i < transitorios.size(); i++) {
+//                            Transitorio report = frutals.get(i);
+//                            if (departments.contains(report.getDepartamentoorigen())) {
+//                                int index = departments.indexOf(report.getDepartamentoorigen());
+//                                tons.set(index, tons.get(index) + report.getVolMentoneladas());
+//                            } else {
+//                                departments.add(report.getDepartamentoorigen());
+//                                tons.add(report.getVolMentoneladas());
+//                            }
+//                        }
                         chartsView.setupPieChart(departments, tons, anyChartView);
                     } else {
                         Log.e(LOGS, "onResponse: " + response.errorBody());
@@ -107,7 +106,7 @@ public class AguacateFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<List<Aguacate>> call, Throwable t) {
+                public void onFailure(Call<List<Transitorio>> call, Throwable t) {
                     Log.e(LOGS, "onFailure: " + t);
                 }
             });

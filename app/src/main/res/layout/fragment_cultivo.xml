@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_banano"
+        android:id="@+id/text_cultivo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,7 +22,7 @@
 
     <Button
         style="@style/Widget.AppCompat.Button.Colored"
-        android:id="@+id/btnBananoYear"
+        android:id="@+id/btnCultivoYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
@@ -29,23 +30,23 @@
         android:layout_marginEnd="165dp"
         android:layout_marginBottom="10dp"
         android:text="@string/textBtnYear"
-        app:layout_constraintBottom_toTopOf="@+id/chartViewBanano"
+        app:layout_constraintBottom_toTopOf="@+id/chartViewCultivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_banano" />
+        app:layout_constraintTop_toBottomOf="@+id/text_cultivo" />
 
     <com.anychart.AnyChartView
-        android:id="@+id/chartViewBanano"
+        android:id="@+id/chartViewCultivo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBananoYear" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCultivoYear" />
 
     <ProgressBar
-        android:id="@+id/progress_bar_banano"
+        android:id="@+id/progress_bar_cultivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

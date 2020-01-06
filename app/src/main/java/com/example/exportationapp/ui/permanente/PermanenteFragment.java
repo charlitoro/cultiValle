@@ -1,4 +1,4 @@
-package com.example.exportationapp.ui.banano;
+package com.example.exportationapp.ui.permanente;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -11,17 +11,14 @@ import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.anychart.AnyChartView;
 import com.example.exportationapp.ChartsView;
 import com.example.exportationapp.R;
 import com.example.exportationapp.exportationapi.ExportationApi;
-import com.example.exportationapp.models.Banano;
+import com.example.exportationapp.models.Permanente;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +30,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BananoFragment extends Fragment {
+public class PermanenteFragment extends Fragment {
 
     // Year picker
     Button btnYear;
@@ -48,16 +45,19 @@ public class BananoFragment extends Fragment {
 
     // Retrofit request
     private Retrofit retrofit;
-    private List<Banano> bananos;
+    private List<Permanente> permanentes;
     private final static String LOGS = "---| ";
+
+    private static String BASE_URL = "https://www.datos.gov.co/resource/";
+    private static String API = "v4ub-9eme.json";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_banano, container, false);
+        View view = inflater.inflate(R.layout.fragment_cultivo, container, false);
 
         // btnYear
-        btnYear = view.findViewById(R.id.btnBananoYear);
+        btnYear = view.findViewById(R.id.btnCultivoYear);
         btnYear.setText(year.toString());
         btnYear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,15 +66,15 @@ public class BananoFragment extends Fragment {
             }
         });
         // progress bar
-        progressBar = view.findViewById(R.id.progress_bar_banano);
+        progressBar = view.findViewById(R.id.progress_bar_cultivo);
 
         // Retroview get data
-        retrofit = new Retrofit.Builder().baseUrl("https://www.datos.gov.co/resource/")
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         // any chart view
-        anyChartView = view.findViewById(R.id.chartViewBanano);
-        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_banano));
+        anyChartView = view.findViewById(R.id.chartViewCultivo);
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_cultivo));
         getData();
 
         return view;
@@ -85,23 +85,23 @@ public class BananoFragment extends Fragment {
     private void getData() {
         try {
             ExportationApi service = retrofit.create(ExportationApi.class);
-            Call<List<Banano>> call = service.getReportBanano("4k8e-ex6x.json?anio="+year.toString());
+            Call<List<Permanente>> call = service.getReportPermanentes(API+"?a_o="+year.toString());
 
-            call.enqueue(new Callback<List<Banano>>() {
+            call.enqueue(new Callback<List<Permanente>>() {
                 @Override
-                public void onResponse(Call<List<Banano>> call, Response<List<Banano>> response) {
+                public void onResponse(Call<List<Permanente>> call, Response<List<Permanente>> response) {
                     if (response.isSuccessful()) {
-                        bananos = response.body();
-                        for(int i=0; i < bananos.size(); i++) {
-                            Banano report = bananos.get(i);
-                            if (departments.contains(report.getDepartamentoorigen())) {
-                                int index = departments.indexOf(report.getDepartamentoorigen());
-                                tons.set(index, tons.get(index) + report.getVolumentoneladas());
-                            } else {
-                                departments.add(report.getDepartamentoorigen());
-                                tons.add(report.getVolumentoneladas());
-                            }
-                        }
+                        permanentes = response.body();
+//                        for(int i = 0; i < permanentes.size(); i++) {
+//                            Permanente report = permanentes.get(i);
+//                            if (departments.contains(report.getDepartamentoorigen())) {
+//                                int index = departments.indexOf(report.getDepartamentoorigen());
+//                                tons.set(index, tons.get(index) + report.getVolumentoneladas());
+//                            } else {
+//                                departments.add(report.getDepartamentoorigen());
+//                                tons.add(report.getVolumentoneladas());
+//                            }
+//                        }
                         chartsView.setupColumnChart(departments, tons, anyChartView);
                     } else {
                         Log.e(LOGS, "onResponse: " + response.errorBody());
@@ -109,7 +109,7 @@ public class BananoFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<List<Banano>> call, Throwable t) {
+                public void onFailure(Call<List<Permanente>> call, Throwable t) {
                     Log.e(LOGS, "onFailure: " + t);
                 }
             });

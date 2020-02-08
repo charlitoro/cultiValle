@@ -17,4 +17,8 @@
 
     <string name="textBtnYear">Year</string>
     <string name="title_charts">Crops planted per hectare (ha)</string>
+    <string name="version">Version</string>
+    <string name="description">Statistics of the different types of crops planted in Valle del Cauca, Colombia</string>
+    <string name="connect_us">Connect Us</string>
+    <string name="about">About of</string>
 </resources>

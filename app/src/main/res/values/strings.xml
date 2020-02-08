@@ -16,4 +16,8 @@
 
     <string name="textBtnYear">Año</string>
     <string name="title_charts">Cultivos sembrados por hectárea (ha)</string>
+    <string name="version">Version</string>
+    <string name="description">Estadisticas de los direfentes tipos de cultivos sembrados en el Valle del Cauca, Colombia</string>
+    <string name="connect_us">Contactanos</string>
+    <string name="about">Acerca de</string>
 </resources>

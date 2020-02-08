@@ -34,7 +34,6 @@ public class TransitorioFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_transitorio, container, false);
 
-
         TextView title = view.findViewById(R.id.text_transitorio);
         title.setText(getText(R.string.menu_transitorios));
 

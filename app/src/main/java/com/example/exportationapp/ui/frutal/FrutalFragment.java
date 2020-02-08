@@ -39,19 +39,22 @@ public class FrutalFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_cultivo, container, false);
+        final View viewRoot = inflater.inflate(R.layout.fragment_cultivo, container, false);
 
         // btnYear
-        btnYear = view.findViewById(R.id.btnCultivoYear);
+        btnYear = viewRoot.findViewById(R.id.btnCultivoYear);
         btnYear.setText(year.toString());
         btnYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                anyChartView.clear();
+                anyChartView = viewRoot.findViewById(R.id.chartViewCultivo);
+                anyChartView.setProgressBar(viewRoot.findViewById(R.id.progress_bar_cultivo));
                 dialog.showYearDialog(view, retrofit, anyChartView, CULTIVO_TYPE);
             }
         });
 
-        TextView title = view.findViewById(R.id.text_cultivo);
+        TextView title = viewRoot.findViewById(R.id.text_cultivo);
         title.setText(getText(R.string.menu_frutales));
 
         // Retroview get data
@@ -59,10 +62,10 @@ public class FrutalFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         // any chart view*
-        anyChartView = view.findViewById(R.id.chartViewCultivo);
-        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_cultivo));
+        anyChartView = viewRoot.findViewById(R.id.chartViewCultivo);
+        anyChartView.setProgressBar(viewRoot.findViewById(R.id.progress_bar_cultivo));
         data.getDataFrutales(btnYear.getText().toString(), retrofit, anyChartView);
 
-        return view;
+        return viewRoot;
     }
 }

@@ -1,35 +1,21 @@
 package com.example.exportationapp.ui.transitorio;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.NumberPicker;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.anychart.AnyChartView;
-import com.anychart.core.stock.indicators.TRIX;
-import com.example.exportationapp.ChartsView;
 import com.example.exportationapp.R;
-import com.example.exportationapp.exportationapi.ExportationApi;
-import com.example.exportationapp.models.Frutal;
-import com.example.exportationapp.models.Transitorio;
 import com.example.exportationapp.plugins.DataRequest;
 import com.example.exportationapp.utils.DialogCultivos;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

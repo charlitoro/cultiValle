@@ -3,12 +3,11 @@ package com.example.exportationapp.plugins;
 import android.util.Log;
 
 import com.anychart.AnyChartView;
-import com.example.exportationapp.ChartsView;
 import com.example.exportationapp.exportationapi.ExportationApi;
 import com.example.exportationapp.models.Frutal;
 import com.example.exportationapp.models.Permanente;
 import com.example.exportationapp.models.Transitorio;
-import com.example.exportationapp.sort.SortCultivos;
+import com.example.exportationapp.plugins.sort.SortCultivos;
 
 import java.util.ArrayList;
 import java.util.List;

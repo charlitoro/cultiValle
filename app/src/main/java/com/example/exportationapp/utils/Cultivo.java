@@ -1,4 +1,4 @@
-package com.example.exportationapp;
+package com.example.exportationapp.utils;
 
 public class Cultivo {
     private String name;

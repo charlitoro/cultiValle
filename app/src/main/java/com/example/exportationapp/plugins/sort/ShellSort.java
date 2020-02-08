@@ -1,6 +1,6 @@
-package com.example.exportationapp.sort;
+package com.example.exportationapp.plugins.sort;
 
-import com.example.exportationapp.Cultivo;
+import com.example.exportationapp.utils.Cultivo;
 import java.util.ArrayList;
 
 public class ShellSort {

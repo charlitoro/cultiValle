@@ -10,15 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.anychart.AnyChartView;
-import com.example.exportationapp.ChartsView;
 import com.example.exportationapp.R;
-import com.example.exportationapp.models.Frutal;
 import com.example.exportationapp.plugins.DataRequest;
 import com.example.exportationapp.utils.DialogCultivos;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

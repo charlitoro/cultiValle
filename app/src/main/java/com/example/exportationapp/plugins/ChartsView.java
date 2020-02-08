@@ -1,4 +1,4 @@
-package com.example.exportationapp;
+package com.example.exportationapp.plugins;
 
 import android.widget.ProgressBar;
 

@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">CultiValle</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Agro Exportaciones</string>
-    <string name="nav_header_subtitle">agroexportaciones@gmail.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open">Abrir navigation drawer</string>
+    <string name="navigation_drawer_close">Cerrar navigation drawer</string>
+    <string name="nav_header_title">Cultivos del Valle</string>
+    <string name="nav_header_subtitle">contacto@cultivalle.com</string>
+    <string name="nav_header_desc">Encabezado de Navegación</string>
     <string name="action_settings">Configuración</string>
 
     <string name="menu_frutales">Frutales</string>
@@ -12,7 +12,7 @@
     <string name="menu_transitorios">Transitorios</string>
 
     <string name="chart_cultivo">Cultivos</string>
-    <string name="chart_toneladas">Toneladas</string>
+    <string name="chart_hectareas">Hectareas</string>
 
     <string name="textBtnYear">Año</string>
 </resources>

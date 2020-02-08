@@ -16,4 +16,5 @@
     <string name="chart_hectareas">Hectares</string>
 
     <string name="textBtnYear">Year</string>
+    <string name="title_charts">Crops planted per hectare (ha)</string>
 </resources>

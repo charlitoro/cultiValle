@@ -97,13 +97,13 @@ public class DataRequest {
         }
     }
 
-    public void getDataTransitorios(String year, Retrofit retrofit, final AnyChartView anyChartView) {
+    public void getDataTransitorios(Retrofit retrofit, final AnyChartView anyChartView) {
         final ArrayList<String> cultivos = new ArrayList<String>();
-        final ArrayList<Double> hectare = new ArrayList<Double>();
+        final ArrayList<ArrayList<Double>> hectare = new ArrayList<ArrayList<Double>>();
 
         try {
             ExportationApi service = retrofit.create(ExportationApi.class);
-            Call<List<Transitorio>> call = service.getReportTransitorios(API_TRANSITORIOS+"?a_o="+year);
+            Call<List<Transitorio>> call = service.getReportTransitorios(API_TRANSITORIOS);
 
             call.enqueue(new Callback<List<Transitorio>>() {
                 @Override

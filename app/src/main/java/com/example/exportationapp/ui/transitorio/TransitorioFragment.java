@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,13 +21,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TransitorioFragment extends Fragment {
-    String CULTIVO_TYPE = "TRANSITORIOS";
     DataRequest data = new DataRequest();
-    DialogCultivos dialog = new DialogCultivos();
-
-    // Year picker
-    Button btnYear;
-    Integer year = Calendar.getInstance().get(Calendar.YEAR) - 2 ;
 
     // Any Chart View
     AnyChartView anyChartView;
@@ -37,26 +32,20 @@ public class TransitorioFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cultivo, container, false);
+        View view = inflater.inflate(R.layout.fragment_transitorio, container, false);
 
-        // btnYear
-        btnYear = view.findViewById(R.id.btnCultivoYear);
-        btnYear.setText(year.toString());
-        btnYear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.showYearDialog(view, retrofit, anyChartView, CULTIVO_TYPE);
-            }
-        });
+
+        TextView title = view.findViewById(R.id.text_transitorio);
+        title.setText(getText(R.string.menu_transitorios));
 
         // Retroview get data
         retrofit = new Retrofit.Builder().baseUrl(BASE_URI)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         // any chart view
-        anyChartView = view.findViewById(R.id.chartViewCultivo);
-        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_cultivo));
-        data.getDataTransitorios(btnYear.getText().toString(), retrofit, anyChartView);
+        anyChartView = view.findViewById(R.id.chartViewTransitorio);
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_transitorio));
+        data.getDataTransitorios(retrofit, anyChartView);
         return view;
     }
 }

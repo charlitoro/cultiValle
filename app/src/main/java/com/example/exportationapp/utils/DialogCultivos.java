@@ -49,7 +49,7 @@ public class DialogCultivos {
                 } else if (cultivoType.equals("PERMANENTES")) {
                     data.getDataPermanentes(String.valueOf(nopicker.getValue()), retrofit, anyChartView);
                 } else {
-                    data.getDataTransitorios(String.valueOf(nopicker.getValue()), retrofit, anyChartView);
+                    data.getDataTransitorios(retrofit, anyChartView);
                 }
                 dialogYear.dismiss();
             }

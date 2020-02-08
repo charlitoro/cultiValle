@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -49,6 +50,9 @@ public class FrutalFragment extends Fragment {
                 dialog.showYearDialog(view, retrofit, anyChartView, CULTIVO_TYPE);
             }
         });
+
+        TextView title = view.findViewById(R.id.text_cultivo);
+        title.setText(getText(R.string.menu_frutales));
 
         // Retroview get data
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)

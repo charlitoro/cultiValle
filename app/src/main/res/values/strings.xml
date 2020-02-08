@@ -15,4 +15,5 @@
     <string name="chart_hectareas">Hectareas</string>
 
     <string name="textBtnYear">Año</string>
+    <string name="title_charts">Cultivos sembrados por hectárea (ha)</string>
 </resources>

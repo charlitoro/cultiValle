@@ -6,6 +6,7 @@ import com.example.exportationapp.models.Permanente;
 import com.example.exportationapp.models.Transitorio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SortCultivos {
@@ -17,9 +18,8 @@ public class SortCultivos {
     private final static String[] CULTIVOS_PERMANENTES = { "Cacao", "Café", "Caña de azucar",
             "Caña Panelera", "Platano"
     };
-    private final static String[] CULTIVOS_TRANSITORIOS = { "Algodón a", "Arroz a",
-            "Arroz", "Frijol a", "Frijol b", "Maiz Tecnificado a", "Maiz Tecnificado b", "Maiz Tradicional a",
-            "Maiz Tradicional b", "Sorgo a", "Sorgo b", "Soya a", "Soya b", "Tabaco a", "Tabaco b"
+    private final static String[] CULTIVOS_TRANSITORIOS = { "Arroz a", "Maiz Tecnificado a", "Maiz Tecnificado b",
+            "Soya b", "Frijol b"
     };
 
     public void sortCultivosFrutales(List<Frutal> frutales, ArrayList<String> cultivos, ArrayList<Double> hectare) {
@@ -83,36 +83,92 @@ public class SortCultivos {
         }
     }
 
-    public void sortCultivosTransitorios(List<Transitorio> transitorios, ArrayList<String> cultivos, ArrayList<Double> hectare){
-        ArrayList<Cultivo> cultivosHectares = cleanArrayCultivos(CULTIVOS_TRANSITORIOS);
-        Cultivo tmpCultivo;
+    public void sortCultivosTransitorios(List<Transitorio> transitorios, ArrayList<String> cultivos, ArrayList<ArrayList<Double>> hectare){
+        for (int i = 0; i < CULTIVOS_TRANSITORIOS.length; i++) {
+            cultivos.add(CULTIVOS_TRANSITORIOS[i]);
+        }
+        hectare = cleanMatrixHectars(hectare);
 
         for(int i = 0; i < transitorios.size(); i++) {
             Transitorio report = transitorios.get(i);
+            if (report.getAO() == 2016) {
+                ArrayList<Double> item = hectare.get(0);
+                Double value = item.get(0) + report.getArrozA();
+                item.set(0, value);
+                hectare.set(0, item);
 
-            tmpCultivo = cultivosHectares.get(0); tmpCultivo.sumHectares(report.getAlgodNA()); cultivosHectares.set(0, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(1); tmpCultivo.sumHectares(report.getArrozA()); cultivosHectares.set(1, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(2); tmpCultivo.sumHectares(report.getArroz()); cultivosHectares.set(2, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(3); tmpCultivo.sumHectares(report.getFrijolA()); cultivosHectares.set(3, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(4); tmpCultivo.sumHectares(report.getFrijolB()); cultivosHectares.set(4, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(5); tmpCultivo.sumHectares(report.getMaZTecnificadoA()); cultivosHectares.set(5, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(6); tmpCultivo.sumHectares(report.getMaZTecnificadoB()); cultivosHectares.set(6, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(7); tmpCultivo.sumHectares(report.getMaZTradicionalA()); cultivosHectares.set(7, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(8); tmpCultivo.sumHectares(report.getMaZTradicionalB()); cultivosHectares.set(8, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(9); tmpCultivo.sumHectares(report.getSorgoA()); cultivosHectares.set(9, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(10); tmpCultivo.sumHectares(report.getSorgoB()); cultivosHectares.set(10, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(11); tmpCultivo.sumHectares(report.getSoyaA()); cultivosHectares.set(11, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(12); tmpCultivo.sumHectares(report.getSoyaB()); cultivosHectares.set(12, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(13); tmpCultivo.sumHectares(report.getTabacoA()); cultivosHectares.set(13, tmpCultivo);
-            tmpCultivo = cultivosHectares.get(14); tmpCultivo.sumHectares(report.getTabacoB()); cultivosHectares.set(14, tmpCultivo);
-        }
+                item = hectare.get(1);
+                value = item.get(0) + report.getMaZTecnificadoA();
+                item.set(0, value);
+                hectare.set(1, item);
 
-        ShellSort shell = new ShellSort(cultivosHectares);
-        cultivosHectares = shell.sort();
-        for ( int i = 0; i < cultivosHectares.size(); i++) {
-            Cultivo cultivo = cultivosHectares.get(i);
-            cultivos.add(cultivo.getName());
-            hectare.add(cultivo.getHectares());
+                item = hectare.get(2);
+                value = item.get(0) + report.getMaZTecnificadoB();
+                item.set(0, value);
+                hectare.set(2, item);
+
+                item = hectare.get(3);
+                value = item.get(0) + report.getSoyaB();
+                item.set(0, value);
+                hectare.set(3, item);
+
+                item = hectare.get(4);
+                value = item.get(0) + report.getFrijolB();
+                item.set(0, value);
+                hectare.set(4, item);
+
+            } else if (report.getAO() == 2017) {
+                ArrayList<Double> item = hectare.get(0);
+                Double value = item.get(1) + report.getArrozA();
+                item.set(1, value);
+                hectare.set(0, item);
+
+                item = hectare.get(1);
+                value = item.get(1) + report.getMaZTecnificadoA();
+                item.set(1, value);
+                hectare.set(1, item);
+
+                item = hectare.get(2);
+                value = item.get(1) + report.getMaZTecnificadoB();
+                item.set(1, value);
+                hectare.set(2, item);
+
+                item = hectare.get(3);
+                value = item.get(1) + report.getSoyaB();
+                item.set(1, value);
+                hectare.set(3, item);
+
+                item = hectare.get(4);
+                value = item.get(1) + report.getFrijolB();
+                item.set(1, value);
+                hectare.set(4, item);
+
+            } else if (report.getAO() == 2018) {
+                ArrayList<Double> item = hectare.get(0);
+                Double value = item.get(2) + report.getArrozA();
+                item.set(2, value);
+                hectare.set(0, item);
+
+                item = hectare.get(1);
+                value = item.get(2) + report.getMaZTecnificadoA();
+                item.set(2, value);
+                hectare.set(1, item);
+
+                item = hectare.get(2);
+                value = item.get(2) + report.getMaZTecnificadoB();
+                item.set(2, value);
+                hectare.set(2, item);
+
+                item = hectare.get(3);
+                value = item.get(2) + report.getSoyaB();
+                item.set(2, value);
+                hectare.set(3, item);
+
+                item = hectare.get(4);
+                value = item.get(2) + report.getFrijolB();
+                item.set(2, value);
+                hectare.set(4, item);
+            }
         }
     }
 
@@ -122,5 +178,16 @@ public class SortCultivos {
             cultivos.add(new Cultivo(typeCultivos[i], 0.0));
         }
         return cultivos;
+    }
+
+    public ArrayList<ArrayList<Double>> cleanMatrixHectars(ArrayList<ArrayList<Double>> hectares) {
+        for(int i = 0; i < 5; i++) {
+            ArrayList<Double> tmp = new ArrayList<Double>();
+            for (int j = 0; j < 3; j++) {
+                tmp.add(0.0);
+            }
+            hectares.add(tmp);
+        }
+        return hectares;
     }
 }

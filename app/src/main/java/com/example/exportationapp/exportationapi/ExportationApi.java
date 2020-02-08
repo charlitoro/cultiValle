@@ -15,7 +15,7 @@ public interface ExportationApi {
     Call<List<Frutal>> getReportFrutales(@Url String year);
 
     @GET
-    Call<List<Transitorio>> getReporTransitorios(@Url String year);
+    Call<List<Transitorio>> getReportTransitorios(@Url String year);
 
     @GET
     Call<List<Permanente>> getReportPermanentes(@Url String year);

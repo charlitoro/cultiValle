@@ -2,11 +2,8 @@ package com.example.exportationapp.plugins;
 
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.anychart.AnyChartView;
 import com.example.exportationapp.ChartsView;
-import com.example.exportationapp.R;
 import com.example.exportationapp.exportationapi.ExportationApi;
 import com.example.exportationapp.models.Frutal;
 import com.example.exportationapp.models.Permanente;
@@ -107,14 +104,15 @@ public class DataRequest {
 
         try {
             ExportationApi service = retrofit.create(ExportationApi.class);
-            Call<List<Transitorio>> call = service.getReporTransitorios(API_TRANSITORIOS+"?a_o="+year);
+            Call<List<Transitorio>> call = service.getReportTransitorios(API_TRANSITORIOS+"?a_o="+year);
 
             call.enqueue(new Callback<List<Transitorio>>() {
                 @Override
                 public void onResponse(Call<List<Transitorio>> call, Response<List<Transitorio>> response) {
                     if (response.isSuccessful()) {
                         transitorios = response.body();
-                        sort.sortCultivosPermanentes(permanentes, cultivos, hectare);
+                        assert transitorios != null;
+                        sort.sortCultivosTransitorios(transitorios, cultivos, hectare);
                         chartsView.setup3DBarChart(cultivos, hectare, anyChartView);
                     } else {
                         Log.e(LOGS, "onResponse: " + response.errorBody());

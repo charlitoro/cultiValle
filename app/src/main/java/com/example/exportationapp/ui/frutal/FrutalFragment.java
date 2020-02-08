@@ -58,7 +58,7 @@ public class FrutalFragment extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        // any chart view
+        // any chart view*
         anyChartView = view.findViewById(R.id.chartViewCultivo);
         anyChartView.setProgressBar(view.findViewById(R.id.progress_bar_cultivo));
         data.getDataFrutales(btnYear.getText().toString(), retrofit, anyChartView);

@@ -43,8 +43,9 @@ public class Permanente {
         this.aO = aO.toString();
     }
 
+
     public Double getCacao() {
-        return Double.parseDouble(cacao);
+        return Double.parseDouble(cacao.replace(",", ""));
     }
 
     public void setCacao(Double cacao) {
@@ -52,7 +53,7 @@ public class Permanente {
     }
 
     public Double getCaf() {
-        return Double.parseDouble(caf);
+        return Double.parseDouble(caf.replace(",", ""));
     }
 
     public void setCaf(Double caf) {
@@ -60,7 +61,7 @@ public class Permanente {
     }
 
     public Double getCaADeAzucar1() {
-        return Double.parseDouble(caADeAzucar1);
+        return Double.parseDouble(caADeAzucar1.replace(",", ""));
     }
 
     public void setCaADeAzucar1(Double caADeAzucar1) {
@@ -68,7 +69,7 @@ public class Permanente {
     }
 
     public Double getCaAPanelera1() {
-        return Double.parseDouble(caAPanelera1);
+        return Double.parseDouble(caAPanelera1.replace(",", ""));
     }
 
     public void setCaAPanelera1(Double caAPanelera1) {
@@ -76,7 +77,7 @@ public class Permanente {
     }
 
     public Double getPlTano2() {
-        return Double.parseDouble(plTano2);
+        return Double.parseDouble(plTano2.replace(",", ""));
     }
 
     public void setPlTano2(Double plTano2) {
